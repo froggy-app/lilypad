@@ -8,10 +8,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/froggy-app/lilypad.git"
-  },
+  "repository": "https://github.com/froggy-app/lilypad",
   "author": "Devan Kavalchek",
   "license": "ISC",
   "bugs": {

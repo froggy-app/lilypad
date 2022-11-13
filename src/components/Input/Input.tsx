@@ -45,7 +45,7 @@ const Input = ({
   invalid: invalidProp = false,
 }: {
   type?: InputType;
-  onChange?: ({text, valid}: {text: string; valid: boolean}) => void;
+  onChange?: ({value, valid}: {value: string; valid: boolean}) => void;
   onSubmit?: () => void;
   valid?: boolean;
   invalid?: boolean;
@@ -80,7 +80,7 @@ const Input = ({
 
     if (allowedInput(text)) {
       setValue(text);
-      onChangeProp?.({text, valid});
+      onChangeProp?.({value: text, valid});
     }
   };
 

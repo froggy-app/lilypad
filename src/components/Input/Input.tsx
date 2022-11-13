@@ -8,6 +8,8 @@ const allowedInputNumber = (value: string) =>
   /^\d+(\.\d{0,6})?$/.test(value) || value.length == 0;
 const allowedInputPassword = (value: string) =>
   /^(?=.*[a-zA-Z0-9!@#\$%\^&\*])/.test(value) || value.length == 0;
+const allowedInputEmail = (value: string) =>
+  /^(?=.*[a-zA-Z0-9@.])/.test(value) || value.length == 0;
 
 /*
 This allowedInput methods are different than the isValid methods. This is
@@ -32,12 +34,15 @@ const isValidPassword = (value: string) =>
     value
   );
 
+const isValidEmail = (value: string) =>
+  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+
 const Input = ({
   type = 'text',
   onChange: onChangeProp,
   onSubmit: onSubmitProp,
-  valid: validProp,
-  invalid: invalidProp,
+  valid: validProp = true,
+  invalid: invalidProp = false,
 }: {
   type: InputType;
   onChange?: (text: string, valid: boolean) => void;
@@ -58,6 +63,10 @@ const Input = ({
     case 'password':
       isValid = isValidPassword;
       allowedInput = allowedInputPassword;
+      break;
+    case 'email':
+      isValid = isValidEmail;
+      allowedInput = allowedInputEmail;
       break;
     default:
       isValid = isValidDefault;

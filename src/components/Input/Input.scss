@@ -1,0 +1,9 @@
+.lilypad-input {
+  &.lilypad-input-invalid {
+    border-color: red;
+
+    &:focus {
+      outline: 1px dashed red;
+    }
+  }
+}

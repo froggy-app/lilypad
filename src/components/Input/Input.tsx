@@ -84,8 +84,6 @@ const Input = ({
     }
   };
 
-  //TODO: remove valid from state, let props handle it
-
   const onKeyPress = (e: any) => {
     if (e.key === 'Enter') {
       onSubmitProp?.();

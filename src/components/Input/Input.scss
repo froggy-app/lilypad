@@ -56,3 +56,35 @@
 .lilypad-input-field:has(.lilypad-input:focus) > .lilypad-input-label {
   color: $theme-color-selected;
 }
+
+.lilypad-input-field.lilypad-input-icon-showing
+  .lilypad-input-container
+  .lilypad-input {
+  padding-right: 30px;
+}
+
+.lilypad-input-field-valid .lilypad-input-container .lilypad-input-icon {
+  color: $theme-color-success;
+}
+
+.lilypad-input-field-invalid .lilypad-input-container .lilypad-input-icon {
+  color: $theme-color-warning;
+}
+
+.lilypad-input-icon {
+  height: 20px;
+  width: 20px;
+  position: relative;
+  left: -28px;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.lilypad-input-container {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  width: min-content;
+}

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './Input.scss';
 import '../../lilypad.scss';
+import {FaCheck, FaExclamationCircle} from 'react-icons/fa';
 
 type InputType = 'email' | 'password' | 'text' | 'number';
 
@@ -58,6 +59,7 @@ const Input = ({
   invalid?: boolean;
 }) => {
   const [value, setValue] = useState('');
+  const iconDisplayed = validProp === true || invalidProp === true;
 
   let allowedInput: (value: string) => boolean;
   let isValid: (value: string) => boolean;
@@ -100,12 +102,16 @@ const Input = ({
   const getClassNames = () => {
     let classNames: string = 'lilypad-input-field';
 
-    if (!validProp || invalidProp) {
+    if (invalidProp) {
       classNames += ' lilypad-input-field-invalid';
     }
 
     if (validProp) {
       classNames += ' lilypad-input-field-valid';
+    }
+
+    if (iconDisplayed) {
+      classNames += ' lilypad-input-icon-showing';
     }
 
     return classNames;
@@ -116,15 +122,23 @@ const Input = ({
       {label && label.length > 0 && (
         <p className='lilypad-input-label'>{label}</p>
       )}
-      <input
-        onChange={inputChanged}
-        onKeyPress={onKeyPress}
-        value={value}
-        placeholder={placeholder}
-        autoComplete='off'
-        type={type === 'password' ? 'password' : 'text'}
-        className='lilypad-input'
-      />
+
+      <div className='lilypad-input-container'>
+        <input
+          onChange={inputChanged}
+          onKeyPress={onKeyPress}
+          value={value}
+          placeholder={placeholder}
+          autoComplete='off'
+          type={type === 'password' ? 'password' : 'text'}
+          className='lilypad-input'
+        />
+        {iconDisplayed && (
+          <div className='lilypad-input-icon'>
+            {validProp === true ? <FaCheck /> : <FaExclamationCircle />}
+          </div>
+        )}
+      </div>
       {hint && hint.length > 0 && <p className='lilypad-input-hint'>{hint}</p>}
     </div>
   );

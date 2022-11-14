@@ -2,48 +2,57 @@
 
 .lilypad-input {
   border-width: 2px;
-  border-color: rgb(118, 118, 118);
+  border-color: $theme-color-black-accent;
   border-style: solid;
   border-radius: 8px;
-  height: 16px;
-  font-size: 16px;
-  padding: 10px;
+  height: 14px;
+  font-size: $font-size-regular;
+  padding: 8px;
+  color: $theme-color-black;
 
   &:focus {
-    outline-color: $selected-color;
+    outline-color: $theme-color-selected;
+  }
+
+  &::placeholder {
+    color: $theme-color-black-accent;
   }
 }
 
 .lilypad-input-label {
-  font-size: 16px;
+  font-size: $font-size-regular;
   margin-top: 0px;
   margin-bottom: 6px;
   margin-left: 4px;
 }
 
 .lilypad-input-hint {
-  font-size: 14px;
-  margin-top: 6px;
+  font-size: $font-size-small;
+  margin-top: 4px;
   margin-bottom: 0px;
   margin-left: 4px;
 }
 
 .lilypad-input-container-invalid {
   .lilypad-input {
-    border-color: $invalid-color;
-    background-color: $invalid-color-background;
-
-    &::placeholder {
-      color: $invalid-color;
-    }
+    border-color: $theme-color-warning;
   }
 
-  .lilypad-input-hint,
-  .lilypad-input-label {
-    color: $invalid-color;
+  .lilypad-input-hint {
+    color: $theme-color-warning;
+  }
+}
+
+.lilypad-input-container-valid {
+  .lilypad-input {
+    border-color: $theme-color-success;
+  }
+
+  .lilypad-input-hint {
+    color: $theme-color-success;
   }
 }
 
 .lilypad-input-container:has(.lilypad-input:focus) > .lilypad-input-label {
-  color: $selected-color;
+  color: $theme-color-selected;
 }

@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-$invalid-color: rgb(255, 0, 0);
-$invalid-color-background: rgb(255, 0, 0, 0.25);
-$selected-color: #2196f3;
+$font-size-regular: 14px;
+$font-size-small: 12px;
+
+$theme-color-black: rgb(0, 0, 0);
+$theme-color-black-accent: rgb(173, 172, 172);
+$theme-color-success: rgb(55, 219, 55);
+$theme-color-warning: rgb(255, 0, 0);
+$theme-color-selected: #2196f3;
 
 p,
 input,

@@ -97,30 +97,22 @@ const Input = ({
     }
   };
 
-  /*
   const getClassNames = () => {
-    let classNames: string = 'lilypad-input';
-
-    if (!validProp || invalidProp) {
-      classNames += ' lilypad-input-invalid';
-    }
-
-    return classNames;
-  };
-  */
-
-  const getContainerClassNames = () => {
     let classNames: string = 'lilypad-input-container';
 
     if (!validProp || invalidProp) {
       classNames += ' lilypad-input-container-invalid';
     }
 
+    if (validProp) {
+      classNames += ' lilypad-input-container-valid';
+    }
+
     return classNames;
   };
 
   return (
-    <div className={getContainerClassNames()}>
+    <div className={getClassNames()}>
       {label && label.length > 0 && (
         <p className='lilypad-input-label'>{label}</p>
       )}

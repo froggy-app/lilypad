@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './Input.scss';
+import '../../lilypad.scss';
 
 type InputType = 'email' | 'password' | 'text' | 'number';
 
@@ -39,12 +40,18 @@ const isValidEmail = (value: string) =>
 
 const Input = ({
   type = 'text',
+  label,
+  hint,
+  placeholder,
   onChange: onChangeProp,
   onSubmit: onSubmitProp,
   valid: validProp = true,
   invalid: invalidProp = false,
 }: {
   type?: InputType;
+  label?: string;
+  hint?: string;
+  placeholder?: string;
   onChange?: ({value, valid}: {value: string; valid: boolean}) => void;
   onSubmit?: () => void;
   valid?: boolean;
@@ -90,6 +97,7 @@ const Input = ({
     }
   };
 
+  /*
   const getClassNames = () => {
     let classNames: string = 'lilypad-input';
 
@@ -99,16 +107,34 @@ const Input = ({
 
     return classNames;
   };
+  */
+
+  const getContainerClassNames = () => {
+    let classNames: string = 'lilypad-input-container';
+
+    if (!validProp || invalidProp) {
+      classNames += ' lilypad-input-container-invalid';
+    }
+
+    return classNames;
+  };
 
   return (
-    <input
-      onChange={inputChanged}
-      onKeyPress={onKeyPress}
-      value={value}
-      autoComplete='off'
-      type={type === 'password' ? 'password' : 'text'}
-      className={getClassNames()}
-    />
+    <div className={getContainerClassNames()}>
+      {label && label.length > 0 && (
+        <p className='lilypad-input-label'>{label}</p>
+      )}
+      <input
+        onChange={inputChanged}
+        onKeyPress={onKeyPress}
+        value={value}
+        placeholder={placeholder}
+        autoComplete='off'
+        type={type === 'password' ? 'password' : 'text'}
+        className='lilypad-input'
+      />
+      {hint && hint.length > 0 && <p className='lilypad-input-hint'>{hint}</p>}
+    </div>
   );
 };
 

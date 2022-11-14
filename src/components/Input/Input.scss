@@ -1,9 +1,49 @@
-.lilypad-input {
-  &.lilypad-input-invalid {
-    border-color: red;
+@import '../../lilypad.scss';
 
-    &:focus {
-      outline: 1px dashed red;
+.lilypad-input {
+  border-width: 2px;
+  border-color: rgb(118, 118, 118);
+  border-style: solid;
+  border-radius: 8px;
+  height: 16px;
+  font-size: 16px;
+  padding: 10px;
+
+  &:focus {
+    outline-color: $selected-color;
+  }
+}
+
+.lilypad-input-label {
+  font-size: 16px;
+  margin-top: 0px;
+  margin-bottom: 6px;
+  margin-left: 4px;
+}
+
+.lilypad-input-hint {
+  font-size: 14px;
+  margin-top: 6px;
+  margin-bottom: 0px;
+  margin-left: 4px;
+}
+
+.lilypad-input-container-invalid {
+  .lilypad-input {
+    border-color: $invalid-color;
+    background-color: $invalid-color-background;
+
+    &::placeholder {
+      color: $invalid-color;
     }
   }
+
+  .lilypad-input-hint,
+  .lilypad-input-label {
+    color: $invalid-color;
+  }
+}
+
+.lilypad-input-container:has(.lilypad-input:focus) > .lilypad-input-label {
+  color: $selected-color;
 }

@@ -10,7 +10,11 @@ export default {
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const InputDefault = Template.bind({});
-InputDefault.args = {};
+InputDefault.args = {
+  label: 'Label',
+  placeholder: 'Placeholder',
+  hint: 'Hint text here',
+};
 
 export const InputNumber = Template.bind({});
 InputNumber.args = {

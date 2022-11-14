@@ -33,7 +33,7 @@
   margin-left: 4px;
 }
 
-.lilypad-input-container-invalid {
+.lilypad-input-field-invalid {
   .lilypad-input {
     border-color: $theme-color-warning;
   }
@@ -43,7 +43,7 @@
   }
 }
 
-.lilypad-input-container-valid {
+.lilypad-input-field-valid {
   .lilypad-input {
     border-color: $theme-color-success;
   }
@@ -53,6 +53,6 @@
   }
 }
 
-.lilypad-input-container:has(.lilypad-input:focus) > .lilypad-input-label {
+.lilypad-input-field:has(.lilypad-input:focus) > .lilypad-input-label {
   color: $theme-color-selected;
 }

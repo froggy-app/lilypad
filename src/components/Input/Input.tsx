@@ -98,14 +98,14 @@ const Input = ({
   };
 
   const getClassNames = () => {
-    let classNames: string = 'lilypad-input-container';
+    let classNames: string = 'lilypad-input-field';
 
     if (!validProp || invalidProp) {
-      classNames += ' lilypad-input-container-invalid';
+      classNames += ' lilypad-input-field-invalid';
     }
 
     if (validProp) {
-      classNames += ' lilypad-input-container-valid';
+      classNames += ' lilypad-input-field-valid';
     }
 
     return classNames;

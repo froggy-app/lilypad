@@ -1,5 +1,16 @@
 @import '../../lilypad.scss';
 
+$animation-speed: 0.25s;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .lilypad-input {
   border-width: 2px;
   border-color: $theme-color-black-accent;
@@ -9,47 +20,94 @@
   font-size: $font-size-regular;
   padding: 8px;
   color: $theme-color-black;
+  outline-color: $theme-color-selected-transparent;
+  transition: all $animation-speed ease-out;
+  width: 100%;
 
   &:focus {
     outline-color: $theme-color-selected;
+    outline-style: auto;
   }
 
   &::placeholder {
     color: $theme-color-black-accent;
   }
-}
 
-.lilypad-input-label {
-  font-size: $font-size-regular;
-  margin-top: 0px;
-  margin-bottom: 6px;
-  margin-left: 4px;
-}
-
-.lilypad-input-hint {
-  font-size: $font-size-small;
-  margin-top: 4px;
-  margin-bottom: 0px;
-  margin-left: 4px;
-}
-
-.lilypad-input-field-invalid {
-  .lilypad-input {
-    border-color: $theme-color-warning;
+  &-label {
+    font-size: $font-size-regular;
+    margin-top: 0px;
+    margin-bottom: 6px;
+    margin-left: 4px;
+    transition: color $animation-speed;
   }
 
-  .lilypad-input-hint {
-    color: $theme-color-warning;
-  }
-}
-
-.lilypad-input-field-valid {
-  .lilypad-input {
-    border-color: $theme-color-success;
+  &-hint {
+    font-size: $font-size-small;
+    margin-top: 4px;
+    margin-bottom: 0px;
+    margin-left: 4px;
+    transition: color $animation-speed;
   }
 
-  .lilypad-input-hint {
-    color: $theme-color-success;
+  &-icon {
+    &-container {
+      height: 20px;
+      width: 0px;
+      position: relative;
+      left: -28px;
+      text-align: center;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      animation-name: fadeIn;
+      animation-duration: $animation-speed;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease-out;
+    }
+
+    &-valid {
+      fill: $theme-color-success;
+    }
+
+    &-invalid {
+      fill: $theme-color-warning;
+    }
+
+    &.fade-out {
+      animation-name: fadeIn;
+      animation-direction: reverse;
+      animation-duration: $animation-speed;
+      animation-fill-mode: backwards;
+      animation-timing-function: ease-out;
+    }
+  }
+
+  &-container {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+  }
+
+  &-field {
+    &-invalid {
+      .lilypad-input {
+        border-color: $theme-color-warning;
+
+        &-hint {
+          color: $theme-color-warning;
+        }
+      }
+    }
+
+    &-valid {
+      .lilypad-input {
+        border-color: $theme-color-success;
+
+        &-hint {
+          color: $theme-color-success;
+        }
+      }
+    }
   }
 }
 
@@ -63,27 +121,10 @@
   padding-right: 34px;
 }
 
-.lilypad-input-field-valid .lilypad-input-container .lilypad-input-icon {
+.lilypad-input-field-valid .lilypad-input-container {
   color: $theme-color-success;
 }
 
-.lilypad-input-field-invalid .lilypad-input-container .lilypad-input-icon {
+.lilypad-input-field-invalid .lilypad-input-container {
   color: $theme-color-warning;
-}
-
-.lilypad-input-icon {
-  height: 20px;
-  width: 20px;
-  position: relative;
-  left: -28px;
-  text-align: center;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-}
-
-.lilypad-input-container {
-  display: flex;
-  flex-flow: row;
-  align-items: center;
 }

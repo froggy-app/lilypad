@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Input.scss';
 import '../../lilypad.scss';
 import {FaCheck, FaExclamationCircle} from 'react-icons/fa';
@@ -39,6 +39,8 @@ const isValidPassword = (value: string) =>
 const isValidEmail = (value: string) =>
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
 
+const ANIMATION_SPEED_MS = 250;
+
 const Input = ({
   type = 'text',
   label,
@@ -46,7 +48,7 @@ const Input = ({
   placeholder,
   onChange: onChangeProp,
   onSubmit: onSubmitProp,
-  valid: validProp = true,
+  valid: validProp = false,
   invalid: invalidProp = false,
 }: {
   type?: InputType;
@@ -55,11 +57,45 @@ const Input = ({
   placeholder?: string;
   onChange?: ({value, valid}: {value: string; valid: boolean}) => void;
   onSubmit?: () => void;
-  valid?: boolean;
-  invalid?: boolean;
+  valid: boolean;
+  invalid: boolean;
 }) => {
   const [value, setValue] = useState('');
-  const iconDisplayed = validProp === true || invalidProp === true;
+  const [valid, setValid] = useState(false);
+  const [isRemovingIcon, setIsRemovingIcon] = useState(false);
+  const [iconDisplayed, setIconDisplayed] = useState(false);
+
+  /**
+   * Over-engineered fade out icon effect
+   */
+  useEffect(() => {
+    if (!isRemovingIcon) {
+      const displayed = validProp === true || invalidProp === true;
+      const removingIcon = displayed === false && iconDisplayed === true;
+
+      let timeout = setTimeout(
+        () => {
+          setIconDisplayed(displayed);
+          setIsRemovingIcon(false);
+        },
+        removingIcon ? ANIMATION_SPEED_MS : 0
+      );
+
+      if (removingIcon) {
+        setIsRemovingIcon(true);
+      } else if (valid !== validProp) {
+        setValid(validProp);
+      }
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [validProp, invalidProp, iconDisplayed]);
+
+  console.log(iconDisplayed);
+
+  //const iconDisplayed = validProp === true || invalidProp === true;
 
   let allowedInput: (value: string) => boolean;
   let isValid: (value: string) => boolean;
@@ -117,6 +153,18 @@ const Input = ({
     return classNames;
   };
 
+  const getIconClassNames = (validity: boolean) => {
+    let classNames: string = `lilypad-input-icon lilypad-input-icon-${
+      validity ? 'valid' : 'invalid'
+    }`;
+
+    if (isRemovingIcon) {
+      classNames += ' fade-out';
+    }
+
+    return classNames;
+  };
+
   return (
     <div className={getClassNames()}>
       {label && label.length > 0 && (
@@ -134,8 +182,12 @@ const Input = ({
           className='lilypad-input'
         />
         {iconDisplayed && (
-          <div className='lilypad-input-icon'>
-            {validProp === true ? <FaCheck /> : <FaExclamationCircle />}
+          <div className='lilypad-input-icon-container'>
+            {valid === true ? (
+              <FaCheck className={getIconClassNames(true)} />
+            ) : (
+              <FaExclamationCircle className={getIconClassNames(false)} />
+            )}
           </div>
         )}
       </div>

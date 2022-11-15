@@ -61,41 +61,46 @@ const Input = ({
   invalid: boolean;
 }) => {
   const [value, setValue] = useState('');
+  // Valid must be stateful, because we want it to remain the same (differ from the prop)
+  // when we fade out.
   const [valid, setValid] = useState(false);
-  const [isRemovingIcon, setIsRemovingIcon] = useState(false);
+  const [fadeOutInProgress, setFadeOutInProgress] = useState(false);
+  // useState instead of useRef because useRef doesn't trigger re-render
   const [iconDisplayed, setIconDisplayed] = useState(false);
 
   /**
-   * Over-engineered fade out icon effect
+   * Over-engineered fade out icon effect. If we are removing the icon, delay it's
+   * deletion by ANIMATION_SPEED_MS to give time for the CSS fade out animation
+   * to play.
    */
   useEffect(() => {
-    if (!isRemovingIcon) {
+    if (!fadeOutInProgress) {
+      // displayed represents the current state, iconDisplayed is prev state
       const displayed = validProp === true || invalidProp === true;
+      // Check if icon is being removed, i.e. icon is currently being displayed and
+      // we want to turn it off.
       const removingIcon = displayed === false && iconDisplayed === true;
 
-      let timeout = setTimeout(
-        () => {
-          setIconDisplayed(displayed);
-          setIsRemovingIcon(false);
-        },
-        removingIcon ? ANIMATION_SPEED_MS : 0
-      );
-
       if (removingIcon) {
-        setIsRemovingIcon(true);
-      } else if (valid !== validProp) {
-        setValid(validProp);
+        setFadeOutInProgress(true);
+      } else {
+        setIconDisplayed(displayed);
+
+        if (valid !== validProp) {
+          setValid(validProp);
+        }
       }
+    } else {
+      const timeout = setTimeout(() => {
+        setIconDisplayed(false);
+        setFadeOutInProgress(false);
+      }, ANIMATION_SPEED_MS);
 
-      return () => {
-        clearTimeout(timeout);
-      };
+      return () => clearTimeout(timeout);
     }
-  }, [validProp, invalidProp, iconDisplayed]);
+  }, [validProp, invalidProp, iconDisplayed, valid, fadeOutInProgress]);
 
-  console.log(iconDisplayed);
-
-  //const iconDisplayed = validProp === true || invalidProp === true;
+  console.log(1);
 
   let allowedInput: (value: string) => boolean;
   let isValid: (value: string) => boolean;
@@ -158,7 +163,7 @@ const Input = ({
       validity ? 'valid' : 'invalid'
     }`;
 
-    if (isRemovingIcon) {
+    if (fadeOutInProgress) {
       classNames += ' fade-out';
     }
 

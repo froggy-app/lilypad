@@ -57,8 +57,8 @@ const Input = ({
   placeholder?: string;
   onChange?: ({value, valid}: {value: string; valid: boolean}) => void;
   onSubmit?: () => void;
-  valid: boolean;
-  invalid: boolean;
+  valid?: boolean;
+  invalid?: boolean;
 }) => {
   const [value, setValue] = useState('');
   // Valid must be stateful, because we want it to remain the same (differ from the prop)

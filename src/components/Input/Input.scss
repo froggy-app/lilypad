@@ -1,9 +1,130 @@
-.lilypad-input {
-  &.lilypad-input-invalid {
-    border-color: red;
+@import '../../main.scss';
 
-    &:focus {
-      outline: 1px dashed red;
+$animation-speed: 0.25s;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lilypad-input {
+  border-width: 2px;
+  border-color: $theme-color-black-accent;
+  border-style: solid;
+  border-radius: 8px;
+  height: 14px;
+  font-size: $font-size-regular;
+  padding: 8px;
+  color: $theme-color-black;
+  outline-color: $theme-color-selected-transparent;
+  transition: all $animation-speed ease-out;
+  width: 100%;
+
+  &:focus {
+    outline-color: $theme-color-selected;
+    outline-style: auto;
+  }
+
+  &::placeholder {
+    color: $theme-color-black-accent;
+  }
+
+  &-label {
+    font-size: $font-size-regular;
+    margin-top: 0px;
+    margin-bottom: 6px;
+    margin-left: 4px;
+    transition: color $animation-speed;
+  }
+
+  &-hint {
+    font-size: $font-size-small;
+    margin-top: 4px;
+    margin-bottom: 0px;
+    margin-left: 4px;
+    transition: color $animation-speed;
+  }
+
+  &-icon {
+    &-container {
+      height: 20px;
+      width: 0px;
+      position: relative;
+      left: -28px;
+      text-align: center;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      animation-name: fadeIn;
+      animation-duration: $animation-speed;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease-out;
+    }
+
+    &-valid {
+      fill: $theme-color-success;
+    }
+
+    &-invalid {
+      fill: $theme-color-warning;
+    }
+
+    &.fade-out {
+      animation-name: fadeIn;
+      animation-direction: reverse;
+      animation-duration: $animation-speed;
+      animation-fill-mode: backwards;
+      animation-timing-function: ease-out;
     }
   }
+
+  &-container {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+  }
+
+  &-field {
+    &-invalid {
+      .lilypad-input {
+        border-color: $theme-color-warning;
+
+        &-container {
+          color: $theme-color-warning;
+        }
+
+        &-hint {
+          color: $theme-color-warning;
+        }
+      }
+    }
+
+    &-valid {
+      .lilypad-input {
+        border-color: $theme-color-success;
+
+        &-container {
+          color: $theme-color-success;
+        }
+
+        &-hint {
+          color: $theme-color-success;
+        }
+      }
+    }
+  }
+}
+
+.lilypad-input-field:has(.lilypad-input:focus) > .lilypad-input-label {
+  color: $theme-color-selected;
+}
+
+.lilypad-input-field.lilypad-input-icon-showing
+  .lilypad-input-container
+  .lilypad-input {
+  padding-right: 34px;
 }

@@ -7,10 +7,20 @@ export default {
   component: Input,
 } as ComponentMeta<typeof Input>;
 
-const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
+const Template: ComponentStory<typeof Input> = (args) => {
+  return (
+    <div style={{width: '300px'}}>
+      <Input {...args} />
+    </div>
+  );
+};
 
 export const InputDefault = Template.bind({});
-InputDefault.args = {};
+InputDefault.args = {
+  label: 'Label',
+  placeholder: 'Placeholder',
+  hint: 'Hint text here',
+};
 
 export const InputNumber = Template.bind({});
 InputNumber.args = {

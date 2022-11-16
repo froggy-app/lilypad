@@ -93,6 +93,10 @@ $animation-speed: 0.25s;
       .lilypad-input {
         border-color: $theme-color-warning;
 
+        &-container {
+          color: $theme-color-warning;
+        }
+
         &-hint {
           color: $theme-color-warning;
         }
@@ -102,6 +106,10 @@ $animation-speed: 0.25s;
     &-valid {
       .lilypad-input {
         border-color: $theme-color-success;
+
+        &-container {
+          color: $theme-color-success;
+        }
 
         &-hint {
           color: $theme-color-success;
@@ -119,12 +127,4 @@ $animation-speed: 0.25s;
   .lilypad-input-container
   .lilypad-input {
   padding-right: 34px;
-}
-
-.lilypad-input-field-valid .lilypad-input-container {
-  color: $theme-color-success;
-}
-
-.lilypad-input-field-invalid .lilypad-input-container {
-  color: $theme-color-warning;
 }

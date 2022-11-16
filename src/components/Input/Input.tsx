@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './Input.scss';
-import '../../lilypad.scss';
+import '../../main.scss';
 import {FaCheck, FaExclamationCircle} from 'react-icons/fa';
 
 type InputType = 'email' | 'password' | 'text' | 'number';

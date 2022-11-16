@@ -100,8 +100,6 @@ const Input = ({
     }
   }, [validProp, invalidProp, iconDisplayed, valid, fadeOutInProgress]);
 
-  console.log(1);
-
   let allowedInput: (value: string) => boolean;
   let isValid: (value: string) => boolean;
 

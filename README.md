@@ -1,5 +1,7 @@
 # 🪷 lilypad
 
+A modern and responsive component library built for froggy 🐸
+
 ## How to install
 
 npm

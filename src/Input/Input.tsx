@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {FaCheck, FaExclamationCircle} from 'react-icons/fa';
-import '../../main.scss';
+import '../main.scss';
 import './Input.scss';
 
 type InputType = 'email' | 'password' | 'text' | 'number';

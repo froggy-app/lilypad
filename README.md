@@ -47,10 +47,6 @@ npm run rollup
 npm publish
 ```
 
-Sometimes files can remain in the `dist` folder after deleting them and rolling
-up. To fix this, I find it's a good practice to delete the `dist` folder before
-running rollup.
-
 ### Using Storybook
 
 Storybook is a great way to preview components. You can run storybook using the

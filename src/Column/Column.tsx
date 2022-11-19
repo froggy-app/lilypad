@@ -20,6 +20,7 @@ const Column = ({
       justifyContent={justifyContent}
       alignItems={alignItems}
       wrap={wrap}
+      classNames='lilypad-column'
     >
       {children}
     </FlexContainer>

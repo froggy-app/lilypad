@@ -9,7 +9,7 @@ export default {
 
 const Box = ({backgroundColor}: {backgroundColor: string}) => (
   <div
-    style={{height: '20px', width: '20px', backgroundColor, padding: '5px'}}
+    style={{height: '20px', width: '20px', backgroundColor, margin: '5px'}}
   ></div>
 );
 

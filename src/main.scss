@@ -17,11 +17,11 @@ button {
 }
 
 $weights: (
-  'xs': 1px,
-  'sm': 2px,
-  'md': 4px,
-  'lg': 8px,
-  'xl': 16px,
+  'xs': 4px,
+  'sm': 8px,
+  'md': 16px,
+  'lg': 32px,
+  'xl': 64px,
 );
 
 @each $code, $weight in $weights {

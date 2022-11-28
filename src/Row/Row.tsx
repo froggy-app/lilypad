@@ -9,7 +9,7 @@ const Row = ({
   className,
   children,
 }: {
-  reverse: boolean;
+  reverse?: boolean;
   justifyContent?: alignmentType;
   alignItems?: alignmentType;
   wrap?: wrapType;

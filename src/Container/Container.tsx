@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Container = ({
-  height = '0px',
-  width = '0px',
+  height = 'auto',
+  width = 'auto',
   className,
   children,
 }: {

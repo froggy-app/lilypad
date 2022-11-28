@@ -13,7 +13,7 @@ const Container = ({
 }) => {
   return (
     <div
-      className={`p-xs mx-md ${className}`}
+      className={className}
       style={{
         height,
         width,

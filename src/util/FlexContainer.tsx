@@ -40,6 +40,8 @@ const FlexContainer = ({
         alignItems,
         flexFlow,
         flexWrap: wrap,
+        height: '100%',
+        width: '100%',
       }}
     >
       {children}

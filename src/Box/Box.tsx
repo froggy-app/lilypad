@@ -56,6 +56,7 @@ const Box = ({
 
   return (
     <div
+      className='p-1'
       style={{
         padding: `${pt} ${pr} ${pb} ${pl}`,
         margin: `${mt} ${mr} ${mb} ${ml}`,

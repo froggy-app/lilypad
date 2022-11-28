@@ -21,19 +21,19 @@ const FlexContainer = ({
   alignItems = 'initial',
   flexFlow = 'initial',
   wrap = 'initial',
-  classNames,
+  className,
   children,
 }: {
   justifyContent?: alignmentType;
   alignItems?: alignmentType;
   flexFlow?: flexFlowType;
   wrap?: wrapType;
-  classNames?: string;
+  className?: string;
   children?: JSX.Element[] | JSX.Element;
 }) => {
   return (
     <div
-      className={`lilypad-flex-container ${classNames}`}
+      className={`lilypad-flex-container ${className}`}
       style={{
         display: 'flex',
         justifyContent,

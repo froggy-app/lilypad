@@ -6,12 +6,14 @@ const Column = ({
   justifyContent = 'initial',
   alignItems = 'initial',
   wrap = 'initial',
+  className,
   children,
 }: {
   reverse: boolean;
   justifyContent?: alignmentType;
   alignItems?: alignmentType;
   wrap?: wrapType;
+  className?: string;
   children?: JSX.Element[] | JSX.Element;
 }) => {
   return (
@@ -20,7 +22,7 @@ const Column = ({
       justifyContent={justifyContent}
       alignItems={alignItems}
       wrap={wrap}
-      classNames='lilypad-column'
+      className={`lilypad-column ${className}`}
     >
       {children}
     </FlexContainer>

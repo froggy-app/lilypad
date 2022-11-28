@@ -50,6 +50,7 @@ const Input = ({
   onSubmit: onSubmitProp,
   valid: validProp = false,
   invalid: invalidProp = false,
+  className,
 }: {
   type?: InputType;
   label?: string;
@@ -59,6 +60,7 @@ const Input = ({
   onSubmit?: () => void;
   valid?: boolean;
   invalid?: boolean;
+  className?: string;
 }) => {
   const [value, setValue] = useState('');
   // Valid must be stateful, because we want it to remain the same (differ from the prop)
@@ -139,7 +141,7 @@ const Input = ({
   };
 
   const getClassNames = () => {
-    let classNames: string = 'lilypad-input-field';
+    let classNames: string = `lilypad-input-field ${className}`;
 
     if (invalidProp) {
       classNames += ' lilypad-input-field-invalid';

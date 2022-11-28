@@ -2,8 +2,8 @@ import React from 'react';
 import './Button.scss';
 import '../main.scss';
 
-const Button = ({label}: {label: String}) => {
-  return <button className='lilypad-button'>{label}</button>;
+const Button = ({label, className}: {label: String; className?: string}) => {
+  return <button className={`lilypad-button ${className}`}>{label}</button>;
 };
 
 export default Button;

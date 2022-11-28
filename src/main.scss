@@ -15,3 +15,60 @@ input,
 button {
   font-family: 'Roboto', sans-serif;
 }
+
+$weights: (
+  'xs': 1px,
+  'sm': 2px,
+  'md': 4px,
+  'lg': 8px,
+  'xl': 16px,
+);
+
+@each $code, $weight in $weights {
+  .p-#{$code} {
+    padding: $weight;
+  }
+  .px-#{$code} {
+    padding-right: $weight;
+    padding-left: $weight;
+  }
+  .py-#{$code} {
+    padding-top: $weight;
+    padding-bottom: $weight;
+  }
+  .pl-#{$code} {
+    padding-left: $weight;
+  }
+  .pr-#{$code} {
+    padding-right: $weight;
+  }
+  .pt-#{$code} {
+    padding-top: $weight;
+  }
+  .pb-#{$code} {
+    padding-bottom: $weight;
+  }
+  .m-#{$code} {
+    margin: $weight;
+  }
+  .mx-#{$code} {
+    margin-right: $weight;
+    margin-left: $weight;
+  }
+  .my-#{$code} {
+    margin-top: $weight;
+    margin-bottom: $weight;
+  }
+  .ml-#{$code} {
+    margin-left: $weight;
+  }
+  .mr-#{$code} {
+    margin-right: $weight;
+  }
+  .mt-#{$code} {
+    margin-top: $weight;
+  }
+  .mb-#{$code} {
+    margin-bottom: $weight;
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "@froggy-app/lilypad",
-  "version": "0.0.70",
+  "version": "0.0.71",
   "description": "Component library for froggy",
   "type": "module",
   "scripts": {

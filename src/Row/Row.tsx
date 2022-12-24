@@ -18,11 +18,11 @@ const Row = ({
 }) => {
   return (
     <FlexContainer
-      flexFlow={reverse ? 'row-reverse' : 'row'}
+      flexDirection={reverse ? 'row-reverse' : 'row'}
       justifyContent={justifyContent}
       alignItems={alignItems}
       wrap={wrap}
-      className={`lilypad-row ${className}`}
+      className={`lilypad-row ${className ?? ''}`}
     >
       {children}
     </FlexContainer>

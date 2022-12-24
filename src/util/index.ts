@@ -1,6 +1,6 @@
 export {
   default as FlexContainer,
   alignmentType,
-  flexFlowType,
+  flexDirectionType,
   wrapType,
 } from './FlexContainer';

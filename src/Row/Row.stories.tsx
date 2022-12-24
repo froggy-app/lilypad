@@ -9,25 +9,25 @@ export default {
 
 const Box = ({backgroundColor}: {backgroundColor: string}) => (
   <div
-    style={{height: '20px', width: '20px', backgroundColor, margin: '5px'}}
+    style={{height: '100%', width: '100%', backgroundColor, margin: '5px'}}
   ></div>
 );
 
 const Template: ComponentStory<typeof Row> = (args) => (
-  <Row {...args}>
-    <Box backgroundColor='red' />
-    <Box backgroundColor='orange' />
-    <Box backgroundColor='yellow' />
-    <Box backgroundColor='green' />
-    <Box backgroundColor='blue' />
-    <Box backgroundColor='purple' />
-  </Row>
+  <div
+    style={{
+      width: '300px',
+      height: '400px',
+      backgroundColor: 'red',
+    }}
+  >
+    <Row {...args}>
+      <Box backgroundColor='blue' />
+    </Row>
+  </div>
 );
 
-export const RowDefault = Template.bind({});
-RowDefault.args = {};
-
-export const RowReverse = Template.bind({});
-RowReverse.args = {
-  reverse: true,
+export const RowSizingTest = Template.bind({});
+RowSizingTest.args = {
+  className: 'm-lg',
 };

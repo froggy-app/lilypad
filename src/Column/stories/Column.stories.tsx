@@ -13,7 +13,25 @@ export default {
 
 const Template: ComponentStory<typeof Column> = (args) => (
   <Container height='400px' width='400px'>
-    <Row>
+    <Row justifyContent='space-evenly'>
+      <Column {...args}>
+        <div
+          style={{
+            height: '100px',
+            width: '100px',
+            backgroundColor: 'green',
+            margin: '10px',
+          }}
+        />
+        <div
+          style={{
+            height: '100px',
+            width: '100px',
+            backgroundColor: 'yellow',
+            margin: '10px',
+          }}
+        />
+      </Column>
       <Column {...args}>
         <div
           style={{

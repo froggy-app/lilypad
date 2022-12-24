@@ -1,5 +1,7 @@
 .lilypad-column {
   display: flex;
   flex-direction: column;
-  flex: 1 0 0%;
+  height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
 }

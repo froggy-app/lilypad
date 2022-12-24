@@ -1,5 +1,6 @@
 import React from 'react';
-import {alignmentType, FlexContainer, wrapType} from '../util';
+import {alignmentType, wrapType} from '../util';
+import './Column.scss';
 
 const Column = ({
   reverse,
@@ -17,15 +18,17 @@ const Column = ({
   children?: JSX.Element[] | JSX.Element;
 }) => {
   return (
-    <FlexContainer
-      flexDirection={reverse ? 'column-reverse' : 'column'}
-      justifyContent={justifyContent}
-      alignItems={alignItems}
-      wrap={wrap}
-      className={`lilypad-column ${className}`}
-    >
-      {children}
-    </FlexContainer>
+    <div className='lilypad-column-container'>
+      <div
+        className={`lilypad-column ${className}`}
+        style={{
+          justifyContent,
+          alignItems,
+        }}
+      >
+        {children}
+      </div>
+    </div>
   );
 };
 

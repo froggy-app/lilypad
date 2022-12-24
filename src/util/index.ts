@@ -1,6 +1,1 @@
-export {
-  default as FlexContainer,
-  alignmentType,
-  flexDirectionType,
-  wrapType,
-} from './FlexContainer';
+export {alignmentType, flexDirectionType, wrapType} from './flexTypes';

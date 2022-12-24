@@ -1,5 +1,6 @@
 import React from 'react';
-import {alignmentType, FlexContainer, wrapType} from '../util';
+import {alignmentType, wrapType} from '../util';
+import './Row.scss';
 
 const Row = ({
   reverse,
@@ -17,15 +18,17 @@ const Row = ({
   children?: JSX.Element[] | JSX.Element;
 }) => {
   return (
-    <FlexContainer
-      flexDirection={reverse ? 'row-reverse' : 'row'}
-      justifyContent={justifyContent}
-      alignItems={alignItems}
-      wrap={wrap}
-      className={`lilypad-row ${className}`}
-    >
-      {children}
-    </FlexContainer>
+    <div className='lilypad-row-container'>
+      <div
+        className={`lilypad-row ${className}`}
+        style={{
+          justifyContent,
+          alignItems,
+        }}
+      >
+        {children}
+      </div>
+    </div>
   );
 };
 

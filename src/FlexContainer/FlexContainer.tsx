@@ -1,26 +1,13 @@
 import React from 'react';
-
-export type alignmentType =
-  | 'center'
-  | 'start'
-  | 'end'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly'
-  | 'initial';
-export type flexDirectionType =
-  | 'column'
-  | 'column-reverse'
-  | 'row'
-  | 'row-reverse'
-  | 'initial';
-export type wrapType = 'wrap' | 'nowrap' | 'wrap-reverse' | 'initial';
+import {alignmentType, flexDirectionType, wrapType} from '../util';
 
 const FlexContainer = ({
   justifyContent = 'initial',
   alignItems = 'initial',
   flexDirection = 'initial',
   wrap = 'initial',
+  height = 'auto',
+  width = 'auto',
   className = '',
   children,
 }: {
@@ -28,6 +15,8 @@ const FlexContainer = ({
   alignItems?: alignmentType;
   flexDirection?: flexDirectionType;
   wrap?: wrapType;
+  height?: string;
+  width?: string;
   className?: string;
   children?: JSX.Element[] | JSX.Element;
 }) => {
@@ -39,6 +28,8 @@ const FlexContainer = ({
         justifyContent,
         alignItems,
         flexDirection,
+        height,
+        width,
         flexWrap: wrap,
         overflow: 'auto',
       }}

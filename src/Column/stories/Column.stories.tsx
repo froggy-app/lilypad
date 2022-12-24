@@ -1,8 +1,8 @@
-import Column from './Column';
-import {Container} from '../Container';
+import Column from '../Column';
+import {FlexContainer} from '../../FlexContainer';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 import React from 'react';
-import '../main.scss';
+import '../../main.scss';
 import './story.scss';
 
 export default {
@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof Column>;
 
 const Template: ComponentStory<typeof Column> = (args) => (
-  <Container height='400px' width='400px' flexDirection='row'>
+  <FlexContainer height='400px' width='400px'>
     <Column {...args}>
       <div
         style={{
@@ -30,7 +30,7 @@ const Template: ComponentStory<typeof Column> = (args) => (
         }}
       />
     </Column>
-  </Container>
+  </FlexContainer>
 );
 
 export const ColumnSizingTest = Template.bind({});

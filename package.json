@@ -1,11 +1,12 @@
 {
   "name": "@froggy-app/lilypad",
-  "version": "0.0.73",
+  "version": "0.0.75",
   "description": "Component library for froggy",
   "type": "module",
   "scripts": {
     "rollup": "rm -f -r ./dist && npm i && rollup -c",
     "storybook": "npm-install-peers && start-storybook -p 6006",
+    "storybook-skip-peers": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "repository": "https://github.com/froggy-app/lilypad",

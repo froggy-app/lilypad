@@ -1,7 +1,7 @@
-import Row from './Row';
+import Row from '../Row';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 import React from 'react';
-import {Container} from '../Container';
+import {FlexContainer} from '../../FlexContainer';
 import './story.scss';
 
 export default {
@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof Row>;
 
 const Template: ComponentStory<typeof Row> = (args) => (
-  <Container height='400px' width='400px' flexDirection='column'>
+  <FlexContainer height='400px' width='400px' flexDirection='column'>
     <Row {...args}>
       <div
         style={{
@@ -29,7 +29,7 @@ const Template: ComponentStory<typeof Row> = (args) => (
         }}
       />
     </Row>
-  </Container>
+  </FlexContainer>
 );
 
 export const RowSizingTest = Template.bind({});

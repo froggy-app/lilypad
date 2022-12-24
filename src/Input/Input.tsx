@@ -50,7 +50,7 @@ const Input = ({
   onSubmit: onSubmitProp,
   valid: validProp = false,
   invalid: invalidProp = false,
-  className,
+  className = '',
 }: {
   type?: InputType;
   label?: string;

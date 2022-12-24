@@ -1,30 +1,35 @@
 import Row from './Row';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 import React from 'react';
+import {Container} from '../Container';
+import './story.scss';
 
 export default {
   title: 'lilypad/Row',
   component: Row,
 } as ComponentMeta<typeof Row>;
 
-const Box = ({backgroundColor}: {backgroundColor: string}) => (
-  <div
-    style={{height: '100%', width: '100%', backgroundColor, margin: '5px'}}
-  ></div>
-);
-
 const Template: ComponentStory<typeof Row> = (args) => (
-  <div
-    style={{
-      width: '300px',
-      height: '400px',
-      backgroundColor: 'red',
-    }}
-  >
+  <Container height='400px' width='400px' flexDirection='column'>
     <Row {...args}>
-      <Box backgroundColor='blue' />
+      <div
+        style={{
+          height: '100px',
+          width: '100px',
+          backgroundColor: 'green',
+          margin: '10px',
+        }}
+      />
+      <div
+        style={{
+          height: '100px',
+          width: '100px',
+          backgroundColor: 'yellow',
+          margin: '10px',
+        }}
+      />
     </Row>
-  </div>
+  </Container>
 );
 
 export const RowSizingTest = Template.bind({});

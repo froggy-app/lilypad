@@ -6,7 +6,7 @@ const Row = ({
   justifyContent = 'initial',
   alignItems = 'initial',
   wrap = 'initial',
-  className,
+  className = '',
   children,
 }: {
   reverse?: boolean;
@@ -22,7 +22,7 @@ const Row = ({
       justifyContent={justifyContent}
       alignItems={alignItems}
       wrap={wrap}
-      className={`lilypad-row ${className ?? ''}`}
+      className={`lilypad-row ${className}`}
     >
       {children}
     </FlexContainer>

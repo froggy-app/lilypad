@@ -6,7 +6,7 @@ const Column = ({
   justifyContent = 'initial',
   alignItems = 'initial',
   wrap = 'initial',
-  className,
+  className = '',
   children,
 }: {
   reverse?: boolean;
@@ -22,7 +22,7 @@ const Column = ({
       justifyContent={justifyContent}
       alignItems={alignItems}
       wrap={wrap}
-      className={`lilypad-column ${className ?? ''}`}
+      className={`lilypad-column ${className}`}
     >
       {children}
     </FlexContainer>

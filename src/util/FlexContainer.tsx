@@ -21,7 +21,7 @@ const FlexContainer = ({
   alignItems = 'initial',
   flexDirection = 'initial',
   wrap = 'initial',
-  className,
+  className = '',
   children,
 }: {
   justifyContent?: alignmentType;
@@ -32,20 +32,18 @@ const FlexContainer = ({
   children?: JSX.Element[] | JSX.Element;
 }) => {
   return (
-    <div style={{display: 'flex', flexDirection: 'row', height: '100%'}}>
-      <div
-        className={`lilypad-flex-container ${className ?? ''}`}
-        style={{
-          display: 'flex',
-          justifyContent,
-          alignItems,
-          flexDirection,
-          flexWrap: wrap,
-          flex: 1,
-        }}
-      >
-        {children}
-      </div>
+    <div
+      className={`lilypad-flex-container ${className}`}
+      style={{
+        display: 'flex',
+        justifyContent,
+        alignItems,
+        flexDirection,
+        flexWrap: wrap,
+        overflow: 'auto',
+      }}
+    >
+      {children}
     </div>
   );
 };

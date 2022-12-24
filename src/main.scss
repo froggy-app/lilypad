@@ -10,6 +10,10 @@ $theme-color-warning: rgb(255, 0, 0);
 $theme-color-selected: rgb(33, 150, 243);
 $theme-color-selected-transparent: rgba(33, 150, 243, 0);
 
+body {
+  overflow-x: hidden;
+}
+
 p,
 input,
 button {

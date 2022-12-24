@@ -89,6 +89,8 @@ $animation-speed: 0.25s;
   }
 
   &-field {
+    flex-grow: 1;
+
     &-invalid {
       .lilypad-input {
         border-color: $theme-color-warning;

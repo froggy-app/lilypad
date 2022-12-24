@@ -1,10 +1,4 @@
 .lilypad-row {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-
-  &-container {
-    display: flex;
-    flex-direction: column;
-  }
 }

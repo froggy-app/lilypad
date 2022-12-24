@@ -18,16 +18,15 @@ const Row = ({
   children?: JSX.Element[] | JSX.Element;
 }) => {
   return (
-    <div className='lilypad-row-container'>
-      <div
-        className={`lilypad-row ${className}`}
-        style={{
-          justifyContent,
-          alignItems,
-        }}
-      >
-        {children}
-      </div>
+    <div
+      className={`lilypad-row ${className}`}
+      style={{
+        justifyContent,
+        alignItems,
+        flexWrap: wrap,
+      }}
+    >
+      {children}
     </div>
   );
 };

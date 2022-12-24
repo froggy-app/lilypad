@@ -18,16 +18,15 @@ const Column = ({
   children?: JSX.Element[] | JSX.Element;
 }) => {
   return (
-    <div className='lilypad-column-container'>
-      <div
-        className={`lilypad-column ${className}`}
-        style={{
-          justifyContent,
-          alignItems,
-        }}
-      >
-        {children}
-      </div>
+    <div
+      className={`lilypad-column ${className}`}
+      style={{
+        justifyContent,
+        alignItems,
+        flexWrap: wrap,
+      }}
+    >
+      {children}
     </div>
   );
 };

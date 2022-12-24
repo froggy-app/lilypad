@@ -1,8 +1,8 @@
 import Row from '../Row';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 import React from 'react';
-import {FlexContainer} from '../../FlexContainer';
 import './story.scss';
+import {Container} from '../../Container';
 
 export default {
   title: 'lilypad/Row',
@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof Row>;
 
 const Template: ComponentStory<typeof Row> = (args) => (
-  <FlexContainer height='400px' width='400px' flexDirection='column'>
+  <Container height='400px' width='400px'>
     <Row {...args}>
       <div
         style={{
@@ -29,7 +29,7 @@ const Template: ComponentStory<typeof Row> = (args) => (
         }}
       />
     </Row>
-  </FlexContainer>
+  </Container>
 );
 
 export const RowSizingTest = Template.bind({});

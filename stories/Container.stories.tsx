@@ -1,4 +1,4 @@
-import Container from '../Container';
+import Container from '../src/Container/Container';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 import React from 'react';
 

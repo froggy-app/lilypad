@@ -13,5 +13,8 @@
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "declarationDir": "types"
-  }
+  },
+  "exclude": [
+    "stories"
+  ]
 }

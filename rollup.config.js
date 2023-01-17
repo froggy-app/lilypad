@@ -24,7 +24,11 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
-      typescript({tsconfig: './tsconfig.json', sourceMap: false}),
+      typescript({
+        tsconfig: './tsconfig.json',
+        sourceMap: false,
+        exclude: ['stories'],
+      }),
       postcss(),
     ],
   },

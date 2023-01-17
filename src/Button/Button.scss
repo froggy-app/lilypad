@@ -1,4 +1,13 @@
 .lilypad-button {
-  background-color: red;
+  background-color: rgb(183, 208, 25);
   border: 0;
+  padding-right: 12px;
+  padding-left: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 6px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

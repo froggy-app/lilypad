@@ -1,4 +1,4 @@
-import Button from '../Button';
+import Button from '../src/Button/Button';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 import React from 'react';
 

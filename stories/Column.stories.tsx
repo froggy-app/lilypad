@@ -1,10 +1,10 @@
-import Column from '../Column';
+import Column from '../src/Column/Column';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 import React from 'react';
-import '../../main.scss';
+import '../src/main.scss';
 import './story.scss';
-import {Container} from '../../Container';
-import {Row} from '../../Row';
+import {Container} from '../src/Container';
+import {Row} from '../src/Row';
 
 export default {
   title: 'lilypad/Column',

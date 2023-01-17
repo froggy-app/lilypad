@@ -1,8 +1,7 @@
-import Row from '../Row';
+import Row from '../src/Row/Row';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 import React from 'react';
-import './story.scss';
-import {Container} from '../../Container';
+import {Container} from '../src/Container';
 
 export default {
   title: 'lilypad/Row',

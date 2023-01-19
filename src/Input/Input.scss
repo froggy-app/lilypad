@@ -41,8 +41,7 @@ $animation-speed: 0.25s;
     transition: color $animation-speed;
   }
 
-  &-hint,
-  &-rule {
+  &-hint {
     font-size: $font-size-small;
     margin-top: 4px;
     margin-bottom: 0px;
@@ -51,6 +50,12 @@ $animation-speed: 0.25s;
   }
 
   &-rule {
+    font-size: $font-size-small;
+    transition: color $animation-speed;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 4px;
+
     &-valid {
       color: $theme-color-black;
     }
@@ -60,9 +65,17 @@ $animation-speed: 0.25s;
     }
 
     &-list {
-      padding-left: 24px;
+      padding-left: 14px;
       margin-top: 8px;
       margin-bottom: 8px;
+    }
+
+    &-item {
+      display: flex;
+      flex-flow: row;
+      align-items: center;
+      margin-top: 4px;
+      margin-bottom: 4px;
     }
   }
 

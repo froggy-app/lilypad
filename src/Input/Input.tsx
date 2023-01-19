@@ -9,9 +9,9 @@ const allowedInputDefault = (value: string) => true;
 const allowedInputNumber = (value: string) =>
   /^\d+(\.\d{0,6})?$/.test(value) || value.length == 0;
 const allowedInputPassword = (value: string) =>
-  /^(?=.*[a-zA-Z0-9!@#\$%\^&\*])/.test(value) || value.length == 0;
+  /^(?=.*[a-zA-Z0-9!@#\$%\^&\*])(\S+$)/.test(value) || value.length == 0;
 const allowedInputEmail = (value: string) =>
-  /^(?=.*[a-zA-Z0-9@.])/.test(value) || value.length == 0;
+  /^(?=.*[a-zA-Z0-9@.])(\S+$)/.test(value) || value.length == 0;
 
 const ANIMATION_SPEED_MS = 250;
 
@@ -175,17 +175,30 @@ const Input = ({
       </div>
       {hint && hint.length > 0 && <p className='lilypad-input-hint'>{hint}</p>}
       {rules && (
-        <ul className='lilypad-input-rule-list'>
-          {rules?.map(({label, valid}) => (
-            <li
-              className={`lilypad-input-rule lilypad-input-rule-${
-                valid(value) ? 'valid' : 'invalid'
-              }`}
-            >
-              {label}
-            </li>
-          ))}
-        </ul>
+        <div className='lilypad-input-rule-list'>
+          {rules?.map(({label, valid}) => {
+            const isValid = valid(value);
+            return (
+              <div className='lilypad-input-rule-item'>
+                {isValid ? (
+                  <FaCheck className={getIconClassNames(true)} size={12} />
+                ) : (
+                  <FaExclamationCircle
+                    className={getIconClassNames(false)}
+                    size={12}
+                  />
+                )}
+                <p
+                  className={`lilypad-input-rule lilypad-input-rule-${
+                    isValid ? 'valid' : 'invalid'
+                  }`}
+                >
+                  {label}
+                </p>
+              </div>
+            );
+          })}
+        </div>
       )}
     </div>
   );

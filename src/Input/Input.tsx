@@ -16,7 +16,7 @@ const allowedInputEmail = (value: string) =>
 const ANIMATION_SPEED_MS = 250;
 
 interface InputRule {
-  label: string;
+  label?: string;
   valid: (text: string) => boolean;
 }
 
@@ -30,6 +30,7 @@ const Input = ({
   valid: validProp = false,
   invalid: invalidProp = false,
   rules,
+  showRules = false,
   className = '',
 }: {
   type?: InputType;
@@ -41,6 +42,7 @@ const Input = ({
   valid?: boolean;
   invalid?: boolean;
   rules?: InputRule[];
+  showRules?: boolean;
   className?: string;
 }) => {
   const [value, setValue] = useState('');
@@ -174,7 +176,7 @@ const Input = ({
         )}
       </div>
       {hint && hint.length > 0 && <p className='lilypad-input-hint'>{hint}</p>}
-      {rules && (
+      {rules && showRules && (
         <div className='lilypad-input-rule-list'>
           {rules?.map(({label, valid}) => {
             const isValid = valid(value);

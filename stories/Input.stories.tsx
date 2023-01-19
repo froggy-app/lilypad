@@ -32,6 +32,7 @@ InputPassword.args = {
   type: 'password',
   label: 'Enter password',
   hint: 'Password must contain:',
+  showRules: true,
   rules: [
     {
       label: 'An uppercase character',

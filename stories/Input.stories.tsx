@@ -1,7 +1,6 @@
 import Input from '../src/Input/Input';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 import React from 'react';
-import {useState} from 'react';
 
 export default {
   title: 'lilypad/Input',

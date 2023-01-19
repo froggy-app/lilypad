@@ -111,7 +111,7 @@ const Input = ({
     }
   };
 
-  const onKeyPress = (e: any) => {
+  const onKeyDown = (e: any) => {
     if (e.key === 'Enter') {
       onSubmitProp?.();
     }
@@ -135,12 +135,12 @@ const Input = ({
     return classNames;
   };
 
-  const getIconClassNames = (validity: boolean) => {
+  const getIconClassNames = (validity: boolean, fadeOut: boolean = false) => {
     let classNames: string = `lilypad-input-icon lilypad-input-icon-${
       validity ? 'valid' : 'invalid'
     }`;
 
-    if (fadeOutInProgress) {
+    if (fadeOutInProgress && fadeOut) {
       classNames += ' fade-out';
     }
 
@@ -156,7 +156,7 @@ const Input = ({
       <div className='lilypad-input-container'>
         <input
           onChange={inputChanged}
-          onKeyPress={onKeyPress}
+          onKeyDown={onKeyDown}
           value={value}
           placeholder={placeholder}
           autoComplete='off'
@@ -166,9 +166,9 @@ const Input = ({
         {iconDisplayed && (
           <div className='lilypad-input-icon-container'>
             {valid === true ? (
-              <FaCheck className={getIconClassNames(true)} />
+              <FaCheck className={getIconClassNames(true, true)} />
             ) : (
-              <FaExclamationCircle className={getIconClassNames(false)} />
+              <FaExclamationCircle className={getIconClassNames(false, true)} />
             )}
           </div>
         )}

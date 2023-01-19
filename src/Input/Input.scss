@@ -128,10 +128,6 @@ $animation-speed: 0.25s;
         &-container {
           color: $theme-color-warning;
         }
-
-        &-hint {
-          color: $theme-color-warning;
-        }
       }
     }
 
@@ -140,10 +136,6 @@ $animation-speed: 0.25s;
         border-color: $theme-color-success;
 
         &-container {
-          color: $theme-color-success;
-        }
-
-        &-hint {
           color: $theme-color-success;
         }
       }

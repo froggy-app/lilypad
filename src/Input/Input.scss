@@ -41,12 +41,29 @@ $animation-speed: 0.25s;
     transition: color $animation-speed;
   }
 
-  &-hint {
+  &-hint,
+  &-rule {
     font-size: $font-size-small;
     margin-top: 4px;
     margin-bottom: 0px;
     margin-left: 4px;
     transition: color $animation-speed;
+  }
+
+  &-rule {
+    &-valid {
+      color: $theme-color-black;
+    }
+
+    &-invalid {
+      color: $theme-color-warning;
+    }
+
+    &-list {
+      padding-left: 24px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
   }
 
   &-icon {

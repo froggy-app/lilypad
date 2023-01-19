@@ -13,33 +13,12 @@ const allowedInputPassword = (value: string) =>
 const allowedInputEmail = (value: string) =>
   /^(?=.*[a-zA-Z0-9@.])/.test(value) || value.length == 0;
 
-/*
-This allowedInput methods are different than the isValid methods. This is
-because certain things must be allowed to be inputted, but may be invalid
-once the user submits. For example, the input "12." must be allowed in a
-number input, because the user must be able to enter a decimal point. This
-example is allowed input, but not valid, because "12." is not a valid number;
-a number must follow a decimal point.
-*/
-
-const isValidDefault = (value: string) => true;
-const isValidNumber = (value: string) => /^\d+(\.\d{1,6})?$/.test(value);
-/*
-Password rules:
-- Atleast 1 lowercase
-- Atleast 1 uppercase
-- Atleast one special symbol (!@#\$%\^&\*])
-- Length between 12 and 64
-*/
-const isValidPassword = (value: string) =>
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{12,64}$)/.test(
-    value
-  );
-
-const isValidEmail = (value: string) =>
-  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
-
 const ANIMATION_SPEED_MS = 250;
+
+interface InputRule {
+  label: string;
+  valid: (text: string) => boolean;
+}
 
 const Input = ({
   type = 'text',
@@ -50,6 +29,7 @@ const Input = ({
   onSubmit: onSubmitProp,
   valid: validProp = false,
   invalid: invalidProp = false,
+  rules,
   className = '',
 }: {
   type?: InputType;
@@ -60,6 +40,7 @@ const Input = ({
   onSubmit?: () => void;
   valid?: boolean;
   invalid?: boolean;
+  rules?: InputRule[];
   className?: string;
 }) => {
   const [value, setValue] = useState('');
@@ -103,32 +84,28 @@ const Input = ({
   }, [validProp, invalidProp, iconDisplayed, valid, fadeOutInProgress]);
 
   let allowedInput: (value: string) => boolean;
-  let isValid: (value: string) => boolean;
 
   switch (type) {
     case 'number':
-      isValid = isValidNumber;
       allowedInput = allowedInputNumber;
       break;
     case 'password':
-      isValid = isValidPassword;
       allowedInput = allowedInputPassword;
       break;
     case 'email':
-      isValid = isValidEmail;
       allowedInput = allowedInputEmail;
       break;
     default:
-      isValid = isValidDefault;
       allowedInput = allowedInputDefault;
       break;
   }
 
   const inputChanged = (e: any) => {
     const text = e.target.value;
-    const valid = isValid(text);
 
     if (allowedInput(text)) {
+      const valid = rules?.every((rule) => rule.valid(text)) ?? true;
+
       setValue(text);
       onChangeProp?.({value: text, valid});
     }
@@ -197,6 +174,19 @@ const Input = ({
         )}
       </div>
       {hint && hint.length > 0 && <p className='lilypad-input-hint'>{hint}</p>}
+      {rules && (
+        <ul className='lilypad-input-rule-list'>
+          {rules?.map(({label, valid}) => (
+            <li
+              className={`lilypad-input-rule lilypad-input-rule-${
+                valid(value) ? 'valid' : 'invalid'
+              }`}
+            >
+              {label}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

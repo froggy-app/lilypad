@@ -60,4 +60,10 @@ InputPassword.args = {
 export const InputEmail = Template.bind({});
 InputEmail.args = {
   type: 'email',
+  rules: [
+    {
+      valid: (value: string) =>
+        /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value),
+    },
+  ],
 };

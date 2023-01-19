@@ -30,6 +30,30 @@ InputNumber.args = {
 export const InputPassword = Template.bind({});
 InputPassword.args = {
   type: 'password',
+  label: 'Enter password',
+  hint: 'Password must contain:',
+  rules: [
+    {
+      label: 'An uppercase character',
+      valid: (text: string) => /^(?=.*[A-Z])/.test(text),
+    },
+    {
+      label: 'A lowercase character',
+      valid: (text: string) => /^(?=.*[a-z])/.test(text),
+    },
+    {
+      label: 'A number',
+      valid: (text: string) => /^(?=.*[0-9])/.test(text),
+    },
+    {
+      label: 'A special symbol (!@#$%^&*])',
+      valid: (text: string) => /^(?=.*[!@#\$%\^&\*])/.test(text),
+    },
+    {
+      label: '12 to 64 characters',
+      valid: (text: string) => text.length >= 12 && text.length <= 64,
+    },
+  ],
 };
 
 export const InputEmail = Template.bind({});

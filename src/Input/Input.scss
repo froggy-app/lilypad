@@ -49,6 +49,36 @@ $animation-speed: 0.25s;
     transition: color $animation-speed;
   }
 
+  &-rule {
+    font-size: $font-size-small;
+    transition: color $animation-speed;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 4px;
+
+    &-valid {
+      color: $theme-color-black;
+    }
+
+    &-invalid {
+      color: $theme-color-warning;
+    }
+
+    &-list {
+      padding-left: 14px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    &-item {
+      display: flex;
+      flex-flow: row;
+      align-items: center;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+  }
+
   &-icon {
     &-container {
       height: 20px;
@@ -98,10 +128,6 @@ $animation-speed: 0.25s;
         &-container {
           color: $theme-color-warning;
         }
-
-        &-hint {
-          color: $theme-color-warning;
-        }
       }
     }
 
@@ -110,10 +136,6 @@ $animation-speed: 0.25s;
         border-color: $theme-color-success;
 
         &-container {
-          color: $theme-color-success;
-        }
-
-        &-hint {
           color: $theme-color-success;
         }
       }

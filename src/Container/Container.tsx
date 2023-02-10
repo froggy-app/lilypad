@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { PropsWithChildren } from "react";
 
-const Container = ({
-  height = 'auto',
-  width = 'auto',
-  className = '',
-  children,
-}: {
+interface Props {
   height?: string;
   width?: string;
   className?: string;
-  children?: JSX.Element[] | JSX.Element;
-}) => {
+}
+
+const Container = ({
+  height = "auto",
+  width = "auto",
+  className = "",
+  children,
+}: PropsWithChildren<Props>) => {
   return (
     <div
       className={`lilypad-container ${className}`}

@@ -1,22 +1,21 @@
-import React from 'react';
-import {alignmentType, wrapType} from '../util';
-import './Column.scss';
+import React, { PropsWithChildren } from "react";
+import { alignmentType, wrapType } from "../util";
+import "./Column.scss";
 
-const Column = ({
-  reverse,
-  justifyContent = 'initial',
-  alignItems = 'initial',
-  wrap = 'initial',
-  className = '',
-  children,
-}: {
-  reverse?: boolean;
+interface Props {
   justifyContent?: alignmentType;
   alignItems?: alignmentType;
   wrap?: wrapType;
   className?: string;
-  children?: JSX.Element[] | JSX.Element;
-}) => {
+}
+
+const Column = ({
+  justifyContent = "initial",
+  alignItems = "initial",
+  wrap = "initial",
+  className = "",
+  children
+}: PropsWithChildren<Props>) => {
   return (
     <div
       className={`lilypad-column ${className}`}

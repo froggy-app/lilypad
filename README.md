@@ -3,6 +3,7 @@
 A modern and responsive component library built for froggy 🐸.
 
 ## How to install
+> Requires Node 18
 
 npm
 
@@ -29,21 +30,13 @@ Clone this repository and cd into it. Log in to npm using the following command.
 npm login scope=@froggy-app
 ```
 
-You'll also need to install the npm-install-peers command if you want to use
-storybook. This is ran by `package.json` to install react locally for storybook
-to use.
-
-```
-npm install -g npm-install-peers
-```
-
 ### Publishing
 
 Before publishing, make sure to increment the version in `package.json`. Then,
 build the package and publish it to npm.
 
 ```
-npm run rollup
+npm run build
 npm publish
 ```
 

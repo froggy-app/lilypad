@@ -12,9 +12,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
-    "declarationDir": "types"
+    "declarationDir": "types",
+    "baseUrl": "src"
   },
-  "exclude": [
-    "stories"
-  ]
+  "exclude": ["stories", "dist"]
 }

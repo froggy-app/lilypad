@@ -40,6 +40,7 @@
     "install": "^0.13.0",
     "npm": "^9.4.2",
     "postcss": "^8.4.21",
+    "react-scripts": "^5.0.1",
     "rollup": "^3.14.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-dts": "^5.0.0",

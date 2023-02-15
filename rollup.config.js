@@ -6,6 +6,7 @@ import styles from "rollup-plugin-styles";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import dts from "rollup-plugin-dts";
 import del from "rollup-plugin-delete";
+import copy from "rollup-plugin-copy";
 
 import packageJson from "./package.json" assert { type: "json" };
 
@@ -32,6 +33,9 @@ export default [
       terser(),
       styles({ mode: "inject" }),
       del({ targets: "dist/*" }),
+      copy({
+        targets: [{ src: "src", dest: "dist" }],
+      }),
     ],
     external: ["react", "react-dom"],
   },

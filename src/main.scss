@@ -1,12 +1,16 @@
 $font-size-regular: 14px;
 $font-size-small: 12px;
 
+$theme-color-froggy-green: rgb(183, 208, 25);
 $theme-color-black: rgb(0, 0, 0);
 $theme-color-black-accent: rgb(173, 172, 172);
 $theme-color-success: rgb(55, 219, 55);
 $theme-color-warning: rgb(255, 0, 0);
 $theme-color-selected: rgb(33, 150, 243);
 $theme-color-selected-transparent: rgba(33, 150, 243, 0);
+
+$theme-color-disabled: rgb(206, 206, 206);
+$theme-color-disabled-accent: rgb(144, 144, 144);
 
 $weights: (
   'xs': 4px,

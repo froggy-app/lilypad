@@ -1,5 +1,10 @@
+@import '../main.scss';
+
+$animation-speed: 0.25s;
+
 .lilypad-button {
-  background-color: rgb(183, 208, 25);
+  background-color: $theme-color-froggy-green;
+  color: $theme-color-black;
   border: 0;
   padding-right: 12px;
   padding-left: 12px;
@@ -7,7 +12,14 @@
   padding-bottom: 8px;
   border-radius: 6px;
 
-  &:hover {
+  transition: color $animation-speed, background-color $animation-speed;
+
+  &:enabled {
     cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: $theme-color-disabled;
+    color: $theme-color-disabled-accent;
   }
 }

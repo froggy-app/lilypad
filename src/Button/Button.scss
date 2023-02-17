@@ -14,13 +14,11 @@ $animation-speed: 0.25s;
 
   transition: color $animation-speed, background-color $animation-speed;
 
-  &:not(.lilypad-button-disabled) {
-    &:hover {
-      cursor: pointer;
-    }
+  &:enabled {
+    cursor: pointer;
   }
 
-  &-disabled {
+  &:disabled {
     background-color: $theme-color-disabled;
     color: $theme-color-disabled-accent;
   }

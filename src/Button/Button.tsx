@@ -11,28 +11,17 @@ interface Props {
 
 const Button = ({
   label,
-  onClick: onClickProp = () => {},
+  onClick,
   disabled = false,
   className = '',
 }: Props) => {
   const getClassNames = () => {
     let classNames: string = `lilypad-button ${className}`;
-
-    if (disabled) {
-      classNames += 'lilypad-button-disabled';
-    }
-
     return classNames;
   };
 
-  const onClick = () => {
-    if (!disabled) {
-      onClickProp();
-    }
-  };
-
   return (
-    <button className={getClassNames()} onClick={onClick}>
+    <button className={getClassNames()} onClick={onClick} disabled={disabled}>
       {label}
     </button>
   );

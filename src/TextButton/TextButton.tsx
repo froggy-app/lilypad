@@ -16,13 +16,13 @@ const TextButton = ({
   className = '',
 }: Props) => {
   const getClassNames = () => {
-    let classNames: string = `lilypad-button ${className}`;
+    let classNames: string = `lilypad-text-button ${className}`;
     return classNames;
   };
 
   return (
     <button className={getClassNames()} onClick={onClick} disabled={disabled}>
-      {label}
+      {label.toUpperCase()}
     </button>
   );
 };

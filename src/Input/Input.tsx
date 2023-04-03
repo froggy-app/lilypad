@@ -162,7 +162,7 @@ const Input = ({
           value={value}
           placeholder={placeholder}
           autoComplete="off"
-          type={type === 'password' ? 'password' : 'text'}
+          type={type}
           className="lilypad-input"
         />
         {iconDisplayed && (

@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {FaCheck, FaExclamationCircle} from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
+import { FaCheck, FaExclamationCircle } from 'react-icons/fa';
 import '../main.scss';
 import './Input.scss';
 
@@ -11,7 +11,7 @@ const allowedInputNumber = (value: string) =>
 const allowedInputPassword = (value: string) =>
   /^(?=.*[a-zA-Z0-9!@#\$%\^&\*])(\S+$)/.test(value) || value.length == 0;
 const allowedInputEmail = (value: string) =>
-  /^(?=.*[a-zA-Z0-9@.])(\S+$)/.test(value) || value.length == 0;
+  /^[\w@.-]+$/.test(value) || value.length == 0;
 
 const ANIMATION_SPEED_MS = 250;
 
@@ -37,7 +37,7 @@ const Input = ({
   label?: string;
   hint?: string;
   placeholder?: string;
-  onChange?: ({value, valid}: {value: string; valid: boolean}) => void;
+  onChange?: ({ value, valid }: { value: string; valid: boolean }) => void;
   onSubmit?: () => void;
   valid?: boolean;
   invalid?: boolean;
@@ -109,7 +109,7 @@ const Input = ({
       const valid = rules?.every((rule) => rule.valid(text)) ?? true;
 
       setValue(text);
-      onChangeProp?.({value: text, valid});
+      onChangeProp?.({ value: text, valid });
     }
   };
 
@@ -152,21 +152,21 @@ const Input = ({
   return (
     <div className={getClassNames()}>
       {label && label.length > 0 && (
-        <p className='lilypad-input-label'>{label}</p>
+        <p className="lilypad-input-label">{label}</p>
       )}
 
-      <div className='lilypad-input-container'>
+      <div className="lilypad-input-container">
         <input
           onChange={inputChanged}
           onKeyDown={onKeyDown}
           value={value}
           placeholder={placeholder}
-          autoComplete='off'
-          type={type === 'password' ? 'password' : 'text'}
-          className='lilypad-input'
+          autoComplete="off"
+          type={type}
+          className="lilypad-input"
         />
         {iconDisplayed && (
-          <div className='lilypad-input-icon-container'>
+          <div className="lilypad-input-icon-container">
             {valid === true ? (
               <FaCheck className={getIconClassNames(true, true)} />
             ) : (
@@ -175,13 +175,13 @@ const Input = ({
           </div>
         )}
       </div>
-      {hint && hint.length > 0 && <p className='lilypad-input-hint'>{hint}</p>}
+      {hint && hint.length > 0 && <p className="lilypad-input-hint">{hint}</p>}
       {rules && showRules && (
-        <div className='lilypad-input-rule-list'>
-          {rules?.map(({label, valid}) => {
+        <div className="lilypad-input-rule-list">
+          {rules?.map(({ label, valid }) => {
             const isValid = valid(value);
             return (
-              <div className='lilypad-input-rule-item'>
+              <div className="lilypad-input-rule-item">
                 {isValid ? (
                   <FaCheck className={getIconClassNames(true)} size={12} />
                 ) : (

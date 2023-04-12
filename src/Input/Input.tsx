@@ -1,16 +1,17 @@
-/**
- * An input component
- *
- * It is considered bad practice to set both the valid and invalid props to be true.
- * However, if you do, this component should only behave as invalid.
- */
-
 import React, { useEffect, useState } from 'react';
 import { FaCheck, FaExclamationCircle } from 'react-icons/fa';
 import '../main.scss';
 import './Input.scss';
 
 type InputType = 'email' | 'password' | 'text' | 'number';
+
+const allowedInputDefault = (value: string) => true;
+const allowedInputNumber = (value: string) =>
+  /^\d+(\.\d{0,6})?$/.test(value) || value.length == 0;
+const allowedInputPassword = (value: string) =>
+  /^(?=.*[a-zA-Z0-9!@#\$%\^&\*])(\S+$)/.test(value) || value.length == 0;
+const allowedInputEmail = (value: string) =>
+  /^[\w@.-]+$/.test(value) || value.length == 0;
 
 const ANIMATION_SPEED_MS = 250;
 
@@ -29,6 +30,7 @@ const Input = ({
   valid: validProp = false,
   invalid: invalidProp = false,
   rules,
+  showRules = false,
   className = '',
 }: {
   type?: InputType;
@@ -40,6 +42,7 @@ const Input = ({
   valid?: boolean;
   invalid?: boolean;
   rules?: InputRule[];
+  showRules?: boolean;
   className?: string;
 }) => {
   const [value, setValue] = useState('');
@@ -82,10 +85,32 @@ const Input = ({
     }
   }, [validProp, invalidProp, iconDisplayed, valid, fadeOutInProgress]);
 
+  let allowedInput: (value: string) => boolean;
+
+  switch (type) {
+    case 'number':
+      allowedInput = allowedInputNumber;
+      break;
+    case 'password':
+      allowedInput = allowedInputPassword;
+      break;
+    case 'email':
+      allowedInput = allowedInputEmail;
+      break;
+    default:
+      allowedInput = allowedInputDefault;
+      break;
+  }
+
   const inputChanged = (e: any) => {
     const text = e.target.value;
-    setValue(text);
-    onChangeProp?.({ value: text, valid });
+
+    if (allowedInput(text)) {
+      const valid = rules?.every((rule) => rule.valid(text)) ?? true;
+
+      setValue(text);
+      onChangeProp?.({ value: text, valid });
+    }
   };
 
   const onKeyDown = (e: any) => {
@@ -99,7 +124,9 @@ const Input = ({
 
     if (invalidProp) {
       classNames += ' lilypad-input-field-invalid';
-    } else if (validProp) {
+    }
+
+    if (validProp) {
       classNames += ' lilypad-input-field-valid';
     }
 
@@ -140,23 +167,22 @@ const Input = ({
         />
         {iconDisplayed && (
           <div className="lilypad-input-icon-container">
-            {invalidProp === true ? (
-              <FaExclamationCircle className={getIconClassNames(false, true)} />
-            ) : (
+            {valid === true ? (
               <FaCheck className={getIconClassNames(true, true)} />
+            ) : (
+              <FaExclamationCircle className={getIconClassNames(false, true)} />
             )}
           </div>
         )}
       </div>
       {hint && hint.length > 0 && <p className="lilypad-input-hint">{hint}</p>}
-      {rules && (
+      {rules && showRules && (
         <div className="lilypad-input-rule-list">
-          {rules?.map(({ label, valid: rule }) => {
-            const passes = rule(value);
-
+          {rules?.map(({ label, valid }) => {
+            const isValid = valid(value);
             return (
               <div className="lilypad-input-rule-item">
-                {passes ? (
+                {isValid ? (
                   <FaCheck className={getIconClassNames(true)} size={12} />
                 ) : (
                   <FaExclamationCircle
@@ -166,7 +192,7 @@ const Input = ({
                 )}
                 <p
                   className={`lilypad-input-rule lilypad-input-rule-${
-                    passes ? 'valid' : 'invalid'
+                    isValid ? 'valid' : 'invalid'
                   }`}
                 >
                   {label}
